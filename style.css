@@ -27,7 +27,6 @@ body{
     cursor: pointer;
 }
 .calculate {
-    border-top: 1px solid var(--color-border);
-    display: grid;
-    grid-template-columns: 2fr 1.5fr;
+    border-top: 1px solid #bcbfc2;
+    display: flex;
 }
