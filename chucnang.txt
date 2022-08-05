@@ -1,0 +1,5 @@
+ứng dụng máy tính cầm tay
+-  nhập vào các số, tính toán và in ra màn hình
+-  xóa 1 số gần nhất vừa nhập trên màn hình
+-  xem lại lịch sử tính
+- 
