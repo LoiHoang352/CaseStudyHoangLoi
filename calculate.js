@@ -23,8 +23,7 @@ button.textContent != "1/x" &&
 button.textContent != "ln" && 
 button.textContent != "x^" && 
 button.textContent != "x !" && 
-button.textContent != "π"&&
- button.textContent != "∘") {
+button.textContent != "π") {
   display.value += button.textContent;
 } else if (button.textContent === "=") {
   equals();
@@ -61,8 +60,7 @@ else if (button.textContent === "sin") {
   exponent();
 } else if (button.textContent === "x !") {
   factorial();
-}  else if (button.textContent === "∘") {
-  degrees();}
+}
 });
 });
 
@@ -165,20 +163,17 @@ function reverse() {
 display.value = 1/(display.value);
 }
 function sin() {
-  display.value = Math.sin(display.value);
+  display.value = Math.sin(display.value * (Math.PI/180));
 }
 
 function cos() {
-  display.value = Math.cos(display.value);
+  display.value = Math.cos(display.value * (Math.PI/180));
 }
 
 function tan() {
-  display.value = Math.tan(display.value);
+  display.value = Math.tan(display.value * (Math.PI/180));
 }
 
-function degrees() {
-  display.value = display.value * (Math.PI/180);
-}
 
 function ln() {
 display.value = Math.log(display.value);
