@@ -16,6 +16,12 @@
         margin: 0 0px 10px 84px;
     
     }
+    .btn-icon{
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+        background-color: beige;
+    }
     .calc-buttons {
      display: flex;
     flex-wrap: wrap;
