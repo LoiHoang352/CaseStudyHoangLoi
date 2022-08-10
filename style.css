@@ -1,4 +1,5 @@
 .calculator {
+    position: relative;
     max-width: 530px;
     background-color: beige;
     padding: 20px;
@@ -15,6 +16,15 @@
         padding: 0 5px 0 5px;
         margin: 0 0px 10px 84px;
     
+    }
+    #history{
+        position: absolute;
+        width: 140px;
+        height: 200px;
+        background-color: #fff;
+        left: -30%;
+        top: 0;
+        color: #000000;
     }
     .btn-icon{
         font-size: 20px;

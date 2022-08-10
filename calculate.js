@@ -1,10 +1,10 @@
 var display = document.getElementById("screen");
 var buttons = document.getElementsByClassName("button");
-// let logHistory = document.getElementById("history");
-// let history = [];
-// let expressionData = "";
-// let resultData = "";
+let logHistory = document.getElementById("history");
+let historya = [];
 
+let expressionData = "";
+let resultData = "";
 Array.prototype.forEach.call(buttons, function(button) {
 button.addEventListener("click", function() {
 if (button.textContent != "=" && 
@@ -25,6 +25,8 @@ button.textContent != "x^" &&
 button.textContent != "x !" && 
 button.textContent != "π") {
   display.value += button.textContent;
+  expressionData = display.value;
+
 } else if (button.textContent === "=") {
   equals();
 } else if (button.textContent === "C") {
@@ -39,27 +41,35 @@ button.textContent != "π") {
   backspace();
 } else if (button.textContent === "%") {
   percent();
+  expressionData += '%';
 } else if (button.textContent === "π") {
   pi();
 } else if (button.textContent === "x ²") {
   square();
+  expressionData += '²';
 } else if (button.textContent === "√") {
   squareRoot();
-}
-else if (button.textContent === "sin") {
+  expressionData = "√" + '(' + expressionData + ')';
+} else if (button.textContent === "sin") {
   sin();
+  expressionData = "sin" + '(' + expressionData + '°' + ')';
 } else if (button.textContent === "cos") {
   cos();
+  expressionData = "cos" + '(' + expressionData + '°' + ')';
 } else if (button.textContent === "tan") {
   tan();
-}  else if (button.textContent === "1/x") {
-    reverse();
-}  else if (button.textContent === "ln") {
+  expressionData = "tan" + '(' + expressionData + '°' + ')';
+} else if (button.textContent === "1/x") {
+  reverse();
+  expressionData = '1/' +  expressionData
+} else if (button.textContent === "ln") {
   ln();
+  expressionData = "ln" + '(' + expressionData + ')';
 } else if (button.textContent === "x^") {
   exponent();
 } else if (button.textContent === "x !") {
   factorial();
+  expressionData = expressionData + '!'
 }
 });
 });
@@ -73,39 +83,41 @@ display.value == "Syntax Error";
 
 
 function equals() {
+
 if ((display.value).indexOf("^") > -1) {
 var base = (display.value).slice(0, (display.value).indexOf("^"));
 var exponent = (display.value).slice((display.value).indexOf("^") + 1);
 display.value = eval("Math.pow(" + base + "," + exponent + ")");
 } else {
 display.value = eval(display.value)
-checkLength()
+
 syntaxError()
 }
 
-//   history
-// expressionData = display.value;
-// resultData = eval(display.value);
-// history.push({
-//     expression: expressionData, 
-//     result: resultData
-// });
-
-// showHistory()
+//  history
+resultData = eval(display.value);
+historya.push({
+    expression: expressionData, 
+    result: resultData
+});
+showHistory()
 }
-// function showHistory() {
-// let log = ""
-// for (let key in history) {
-//     log += history[key].expression + " = " + history[key].result + "<br>" + "<br>"
-// }
-// logHistory.innerHTML = log
-// }
+
+function showHistory() {
+let log = ""
+for (let key in historya) {
+    log += historya[key].expression + " = " + historya[key].result + "<br>" + "<br>"
+}
+logHistory.innerHTML = log;
+expressionData = display.value;
+}
 // let indexHistory = document.getElementsByClassName("fa-history")
 // indexHistory[0].addEventListener("click", function () {
 // logHistory.classList.toggle("indexHistory")
 // })
 function clear() {
 display.value = "";
+logHistory.innerHTML = ''
 }
 
 function backspace() {
