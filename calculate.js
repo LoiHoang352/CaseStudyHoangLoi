@@ -44,6 +44,8 @@ button.textContent != "π") {
   expressionData += '%';
 } else if (button.textContent === "π") {
   pi();
+  expressionData += 'π';
+
 } else if (button.textContent === "x ²") {
   square();
   expressionData += '²';
@@ -76,21 +78,19 @@ button.textContent != "π") {
 
 
 function syntaxError() {
-if (eval(display.value) == SyntaxError || eval(display.value) == ReferenceError || eval(display.value) == TypeError) {
-display.value == "Syntax Error";
-}
+  if (eval(display.value) == SyntaxError || eval(display.value) == ReferenceError || eval(display.value) == TypeError) {
+    display.value == "Syntax Error";
+  }
 }
 
 
 function equals() {
-
-if ((display.value).indexOf("^") > -1) {
-var base = (display.value).slice(0, (display.value).indexOf("^"));
-var exponent = (display.value).slice((display.value).indexOf("^") + 1);
-display.value = eval("Math.pow(" + base + "," + exponent + ")");
+  if ((display.value).indexOf("^") > -1) {
+    var base = (display.value).slice(0, (display.value).indexOf("^"));
+    var exponent = (display.value).slice((display.value).indexOf("^") + 1);
+    display.value = eval("Math.pow(" + base + "," + exponent + ")");
 } else {
-display.value = eval(display.value)
-
+  display.value = eval(display.value)
 syntaxError()
 }
 
@@ -103,6 +103,7 @@ historya.push({
 showHistory()
 }
 
+// showHistory
 function showHistory() {
 let log = ""
 for (let key in historya) {
@@ -111,33 +112,30 @@ for (let key in historya) {
 logHistory.innerHTML = log;
 expressionData = display.value;
 }
-// let indexHistory = document.getElementsByClassName("fa-history")
-// indexHistory[0].addEventListener("click", function () {
-// logHistory.classList.toggle("indexHistory")
-// })
 function clear() {
-display.value = "";
-logHistory.innerHTML = ''
+  display.value = "";
+  logHistory.innerHTML = " ";
+  historya = [];
 }
 
 function backspace() {
-display.value = display.value.substring(0, display.value.length - 1);
+  display.value = display.value.substring(0, display.value.length - 1);
 }
 
 function multiply() {
-display.value += "*";
+  display.value += "*";
 }
 
 function divide() {
-display.value +=  "/";
+  display.value +=  "/";
 }
 
 function plusMinus() {
-if (display.value.charAt(0) === "-") {
-display.value = display.value.slice(1);
-} else {
-display.value = "-" + display.value;
-}
+  if (display.value.charAt(0) === "-") {
+    display.value = display.value.slice(3);
+  } else {
+    display.value = "-" + display.value;
+  }
 }
 
 function factorial() {
@@ -156,15 +154,15 @@ display.value = number;
 }
 
 function pi() {
-display.value = (display.value * Math.PI);
+display.value = (display.value * Math.PI).toFixed(3);
 }
 
 function square() {
-display.value = eval(display.value * display.value);
+display.value = eval(display.value * display.value).toFixed(3);
 }
 
 function squareRoot() {
-display.value = Math.sqrt(display.value);
+display.value = Math.sqrt(display.value).toFixed(3);
 }
 
 function percent() {
@@ -175,20 +173,20 @@ function reverse() {
 display.value = 1/(display.value);
 }
 function sin() {
-  display.value = Math.sin(display.value * (Math.PI/180));
+  display.value = Math.sin(display.value * (Math.PI/180)).toFixed(3);
 }
 
 function cos() {
-  display.value = Math.cos(display.value * (Math.PI/180));
+  display.value = Math.cos(display.value * (Math.PI/180)).toFixed(3);
 }
 
 function tan() {
-  display.value = Math.tan(display.value * (Math.PI/180));
+  display.value = Math.tan(display.value * (Math.PI/180)).toFixed(3);
 }
 
 
 function ln() {
-display.value = Math.log(display.value);
+display.value = Math.log(display.value).toFixed(3);
 }
 
 function exponent() {

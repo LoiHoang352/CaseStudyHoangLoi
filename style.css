@@ -22,9 +22,10 @@
         width: 140px;
         height: 200px;
         background-color: #fff;
-        left: -30%;
+        left: -40%;
         top: 0;
-        color: #000000;
+        color: #b0ac21;
+       font-size: 25px;
     }
     .btn-icon{
         font-size: 20px;
